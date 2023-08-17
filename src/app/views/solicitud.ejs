@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body> 
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+        <div class="container-fluid" id="nav">
+          <a class="navbar-brand" href="/" style="color: white;">Libreria</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" href="/catalogo" style="color: white;">Catalogo</a>
+              <a class="nav-link" href="/registro" style="color: white;">Registro</a>
+              <a class="nav-link" href="/prestamo" style="color: white;">Prestamos</a>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container" id="solicitud">
+        <div class="row col-md-3 mt-4 mx-auto card text-bg-dark border-danger border-3">
+            <form action="/prestamo/<%=id%>" method="post">
+                
+                <h3 class="card-title">Ingrese su ID</h3>
+                <div class="form-group mt-4">
+                    <input type="text" name="id_cliente" class="form-control" placeholder="ID usuario">
+                </div>
+                <input type="submit" class="btn btn-primary my-4 mx-auto " value="Guardar">
+            </form>
+        </div>
+    </div>
+    
+
+</body>
+</html>
