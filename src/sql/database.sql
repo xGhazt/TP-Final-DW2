@@ -1,5 +1,5 @@
 CREATE DATABASE libreria02;
-USE  libreria0;
+USE  libreria02;
 
 -- ------------------------------------------------
 
