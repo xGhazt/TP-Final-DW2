@@ -37,10 +37,10 @@ module.exports = app =>{
         
         conexion.query(query,[id],(err,result)=>{
             if(err){
-                console.log('Error al borrar el registro');
+                console.log('Error al borrar el libro');
                 res.status(500).send('ESTE LIBRO ESPERA SU DEVOLUCION NO PUEDE SER ELIMINADO')
             } else{
-                console.log('cliente eliminado')
+                console.log('libro eliminado')
                 res.redirect('/catalogo')
             }
         })
@@ -82,8 +82,8 @@ module.exports = app =>{
         const query='SELECT * FROM libros WHERE id_libro=?';
         conexion.query(query,[id],(err,result)=>{
             if(err){
-                console.error('Error al editar el registro')
-                res.status(500).send('Error al editar el registro')
+                
+                res.status(500).send('Error al obtener los datos')
             }else {
                 conexion.query('SELECT * FROM autores',(err,resultA)=>{
                     for(i=0;i<resultA.length;i++){
@@ -92,7 +92,7 @@ module.exports = app =>{
                         }
                         
                     }
-                    console.log("registro editado correctamente");
+                    
                     res.render('modificar_libro',{
                         libros: result[0],
                         nombre: nombre
@@ -122,10 +122,10 @@ module.exports = app =>{
             conexion.query(queryA,[nombre,id_autor],(err,resultA)=>{
                 conexion.query(query,[titulo,id_autor,año,genero,id],(err,result)=>{
                     if(err){
-                        console.error('Error al editar el registro')
+                        console.error('Error al modificar el libro')
                         res.status(500).send('Error al editar el registro')
                     }else {
-                        console.log("registro editado correctamente");
+                        console.log("Libro modificado correctamente");
                         res.redirect('/catalogo')
                     }
                 })
@@ -168,7 +168,7 @@ module.exports = app =>{
         conexion.query(query,[id],(err,result)=>{
             
             if(err){
-                console.log('Error al borrar el registro');
+                console.log('Error al eliminar al cliente');
                 res.status(500).send('error al borrar')
             } else{
                 console.log('cliente eliminado')
@@ -183,10 +183,10 @@ module.exports = app =>{
         const query='SELECT * FROM clientes WHERE id_cliente=?';
         conexion.query(query,[id],(err,result)=>{
             if(err){
-                console.error('Error al editar el registro')
-                res.status(500).send('Error al editar el registro')
+
+                res.status(500).send('Error al obtener los datos')
             }else {
-                console.log("registro editado correctamente");
+                
                 res.render('modificar_cliente',{
                     cliente: result[0]
                 })
@@ -201,10 +201,10 @@ module.exports = app =>{
 
         conexion.query(query,[nombre,apellido,email,id],(err,result)=>{
             if(err){
-                console.error('Error al editar el registro')
-                res.status(500).send('Error al editar el registro')
+                console.error('Error al modificar')
+                res.status(500).send('Error al modificar')
             }else {
-                console.log("registro editado correctamente");
+                console.log("registro modificado");
                 res.redirect('/registro')
             }
         })
@@ -238,10 +238,10 @@ module.exports = app =>{
         const query='SELECT * FROM prestamos WHERE id_prestamo=?';
         conexion.query(query,[id],(err,result)=>{
             if(err){
-                console.error('Error al editar el registro')
-                res.status(500).send('Error al editar el registro')
+                
+                res.status(500).send('Error al obtner los datos')
             }else {
-                console.log("registro editado correctamente");
+                
                 res.render('solicitud',{
                     id:id
                 })
@@ -252,8 +252,8 @@ module.exports = app =>{
     app.post('/prestamo/:id',(req,res)=>{
         const id_libro=req.params.id;
         const id_cliente=req.body.id_cliente;
-        console.log(id_libro)
-        console.log(id_cliente)
+        
+        
         const query = 'INSERT INTO prestamos (id_libro, id_cliente, fecha_prestamo, fecha_devolucion) VALUES (?,?, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 WEEK))';
         conexion.query(query, [id_libro, id_cliente], (err, result) => {
             if (err) {
