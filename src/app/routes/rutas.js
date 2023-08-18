@@ -169,7 +169,7 @@ module.exports = app =>{
             
             if(err){
                 console.log('Error al eliminar al cliente');
-                res.status(500).send('error al borrar')
+                res.status(500).send('El cliente tiene un libro en su poseción ')
             } else{
                 console.log('cliente eliminado')
                 res.redirect('/registro')
